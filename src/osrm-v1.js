@@ -176,7 +176,6 @@
 					name: '',
 					coordinates: [],
 					instructions: [],
-					legs: '', // HACK HERE
 					summary: {
 						totalDistance: responseRoute.distance,
 						totalTime: responseRoute.duration
@@ -195,6 +194,7 @@
 				type,
 				modifier,
 				text,
+			    	location,
 				stepToText;
 
 			if (this.options.stepToText) {
@@ -213,6 +213,7 @@
 					type = this._maneuverToInstructionType(step.maneuver, i === legCount - 1);
 					modifier = this._maneuverToModifier(step.maneuver);
 					text = stepToText(step, {legCount: legCount, legIndex: i});
+					location = step.maneuver.location
 
 					if (type) {
 						if ((i == 0 && step.maneuver.type == 'depart') || step.maneuver.type == 'arrive') {
@@ -229,7 +230,8 @@
 							index: index,
 							mode: step.mode,
 							modifier: modifier,
-							text: text
+							text: text,
+							location: location
 						});
 					}
 
@@ -244,8 +246,6 @@
 				result.waypointIndices = waypointIndices;
 			}
 			
-			result.legs = responseRoute.legs; // HACK HERE
-
 			return result;
 		},
 
