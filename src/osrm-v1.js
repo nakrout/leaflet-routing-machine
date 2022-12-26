@@ -176,6 +176,7 @@
 					name: '',
 					coordinates: [],
 					instructions: [],
+					legs: '', // HACK HERE
 					summary: {
 						totalDistance: responseRoute.distance,
 						totalTime: responseRoute.duration
@@ -242,6 +243,8 @@
 			} else {
 				result.waypointIndices = waypointIndices;
 			}
+			
+			result.legs = responseRoute.legs; // HACK HERE
 
 			return result;
 		},
