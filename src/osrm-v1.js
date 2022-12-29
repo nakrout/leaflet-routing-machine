@@ -213,7 +213,7 @@
 					type = this._maneuverToInstructionType(step.maneuver, i === legCount - 1);
 					modifier = this._maneuverToModifier(step.maneuver);
 					text = stepToText(step, {legCount: legCount, legIndex: i});
-					location = step.maneuver.location
+					location = {lat: step.maneuver.location[0], lng: step.maneuver.location[1]}
 
 					if (type) {
 						if ((i == 0 && step.maneuver.type == 'depart') || step.maneuver.type == 'arrive') {
