@@ -194,7 +194,7 @@
 				type,
 				modifier,
 				text,
-			    	location,
+			    	maneuver,
 				stepToText;
 
 			if (this.options.stepToText) {
@@ -213,7 +213,7 @@
 					type = this._maneuverToInstructionType(step.maneuver, i === legCount - 1);
 					modifier = this._maneuverToModifier(step.maneuver);
 					text = stepToText(step, {legCount: legCount, legIndex: i});
-					location = {lat: step.maneuver.location[1], lng: step.maneuver.location[0]}
+					maneuver = {latlng: {lat: step.maneuver.location[1], lng: step.maneuver.location[0]}, bearing_before: step.maneuver.bearing_before, bearing_after: step.maneuver.bearing_after};
 
 					if (type) {
 						if ((i == 0 && step.maneuver.type == 'depart') || step.maneuver.type == 'arrive') {
@@ -231,7 +231,7 @@
 							mode: step.mode,
 							modifier: modifier,
 							text: text,
-							location: location
+							maneuver: maneuver
 						});
 					}
 
